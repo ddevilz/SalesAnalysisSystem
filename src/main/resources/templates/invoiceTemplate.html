@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Invoice</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      @page :first {
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding-top: 0;
+    padding: 0px 4px 10px; 
+}
+      @page {
+    @top-right {
+        content: "Page " counter(page) " of " counter(pages);
+        font-family: sans-serif;
+        padding-right: 10px;
+        
+    }
+	}
+
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .w-quarter {
+        width: 30%; /* Previously w-1/4 */
+      }
+      .w-three-quarters {
+        width: 70%; /* Previously w-3/4 */
+      }
+      .b {	
+			border: 1px solid #919191  
+		}
+      .bg-gray-50 {
+        background-color: #f9fafb;
+      }
+      .p-4 {
+        padding: 16px;
+      }
+      .rounded-xl {
+        border-radius: 12px;
+      }
+      .py-4 {
+        padding-top: 16px;
+        padding-bottom: 16px;
+      }
+      .text-gray-700 {
+        color: #374151;
+      }
+      .my-6 {
+        margin-top: 24px;
+        margin-bottom: 24px;
+      }
+      .font-bold {
+        font-weight: 650;
+      }
+      .text-4xl {
+        font-size: 26px;
+        line-height: 30px;
+      }
+      .container {
+        width: 100%;
+        max-width: 1024px;
+        margin: 0 auto;
+      }
+      .mt-5 {
+        margin-top: 20px;
+      }
+      .w-52 {
+        width: 208px;
+      }
+      .my-auto {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+      .rounded-3xl {
+        border-radius: 24px;
+      }
+      .w-full {
+        width: 100%;
+      }
+      .border {
+        border-width: 1px;
+        border-style: solid;
+        border-color: #e5e7eb;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .text-xl {
+        font-size: 16px;
+        line-height: 19px;
+      }
+      .text-sm {
+        font-size: 14px;
+        line-height: 20px;
+      }
+      .text-left {
+        text-align: left;
+      }
+      .text-gray-500 {
+        color: #6b7280;
+      }
+      .bg-white {
+        background-color: #ffffff;
+      }
+      .border-b {
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: #e5e7eb;
+      }
+      .px-6 {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+      .py-3 {
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+      .uppercase {
+        text-transform: uppercase;
+      }
+      .relative {
+        position: absolute;
+        left: 25px;
+        top: 50px;
+      }
+      .float-right {
+        float: left;
+      }
+      .w-img {
+        width: 4.5rem;
+      }
+      .w{
+      	width:100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="p-4 my-6 rounded-xl  ">
+      <div class="py-4 rounded-xl  text-gray-700 my-6 ">
+        <img
+          src="https://ems-v2.s3.ap-south-1.amazonaws.com/logo.png"
+          alt="Company Logo"
+          class="relative float-right w-img"
+        />
+        <h1 class="font-bold text-4xl text-center mx-auto">
+          Distributor Details
+        </h1>
+      </div>
+
+      <div class="container mt-5">
+        <table class="w-full">
+          <tr>
+            <td class="w-quater"></td>
+            <td class="w-three-quarter">
+              <div class=" border rounded-xl my-6">
+                <h2 class="text-center py-4 text-xl font-bold text-gray-700">
+                  Distributor Information
+                </h2>
+                <div class="overflow-x-auto w-full">
+                  <table
+                    class="w-full text-sm text-left text-gray-500 border mb-4"
+                  >
+                    <thead class="text-xs text-gray-700 uppercase ">
+                      <tr class="bg-white border-b">
+                        <th class="px-6 py-3 b">Agency Name</th>
+                        <td class="px-6 py-3 b">${agencyName}</td>
+                      </tr>
+                      <tr class="bg-white border-b">
+                        <th class="px-6 py-3 b">Contact Person</th>
+                        <td class="px-6 py-3 b">${contactPerson}</td>
+                      </tr>
+                      <tr class="bg-white border-b">
+                        <th class="px-6 py-3 b">Address</th>
+                        <td class="px-6 py-3 b">${address}</td>
+                      </tr>
+                      <tr class="bg-white border-b">
+                        <th class="px-6 py-3 b">GST No</th>
+                        <td class="px-6 py-3 b">${gstNo}</td>
+                      </tr>
+                      <tr class="bg-white border-b">
+                        <th class="px-6 py-3 b">PAN No</th>
+                        <td class="px-6 py-3 b">${panNo}</td>
+                      </tr>
+                      <tr class="bg-white border-b">
+                        <th class="px-6 py-3 b">City / Region / Zone</th>
+                        <td class="px-6 py-3 b">${city} / ${region} / ${zone}</td>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+		<div class="w-full  border rounded-xl  my-6" ><h3 class="text-center py-4 text-xl font-bold text-gray-700">
+          Distributor Details from: ${fromDate} to ${toDate}. 
+        </h3></div>
+      <div class="w-full  border rounded-xl my-6">
+        <h2 class="text-center py-4 text-xl font-bold text-gray-700">
+          Product Details
+        </h2>
+        <table class="w-full text-sm text-left text-gray-500 border mb-4">
+          <thead class="text-xs text-gray-700 uppercase  text-center">
+            <tr>
+              <th class="px-6 py-3 text-center b w">Date</th>
+              <th class="px-6 py-3 text-center b">Product Name</th>
+              <th class="px-6 py-3 text-center b w">Quantity</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white border-b">
+            ${productRows}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="w-full  border rounded-xl  my-6">
+        <h2 class="text-center py-4 text-xl font-bold text-gray-700">
+          Categories Details
+        </h2>
+        <table class="w-full text-sm text-left text-gray-500 border mb-4">
+          <thead class="text-xs text-gray-700 uppercase ">
+            <tr>
+              <th class="px-6 py-3 b text-center w">Date</th>
+              <th class="px-6 py-3 b text-center">Category Name</th>
+              <th class="px-6 py-3 b text-center w">Quantity</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white border-b">
+            ${categoryRows}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="w-full  border rounded-xl  my-6">
+        <h2 class="text-center py-4 text-xl font-bold text-gray-700">
+          Invoice Summary
+        </h2>
+        <table class="w-full text-sm text-left text-gray-500 border mb-4">
+          <thead class="text-xs text-gray-700 uppercase ">
+            <tr>
+              <th class="px-6 py-3 b text-center w">Date</th>
+              <th class="px-6 py-3 b text-center">Invoice Number</th>
+              <th class="px-6 py-3 b text-center w">Total Amount</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white border-b">
+            ${invoiceNumbers}
+          </tbody>
+          <tfoot>
+            <tr class="bg-white border-b font-bold">
+              <td class="px-6 py-3 b text-center w" colspan="2">Total Amount</td>
+              <td class="px-6 py-3 b text-center w">${totalAmount}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
